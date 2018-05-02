@@ -1,0 +1,42 @@
+.pacman{
+  height: 45px;
+  width: 45px;
+  background-image: url("/Users/tech-a46/Documents/engineering-9/Game/Pac-Man.gif");
+  display: inline-block;
+  background-size: cover;
+}
+
+.wall{
+  height: 45px;
+  width: 45px;
+  background-image: url("/Users/tech-a46/Documents/engineering-9/Game/wall.png");
+  display: inline-block;
+}
+
+.coin{
+height: 45px;
+width: 45px;
+background-image: url('/Users/tech-a46/Documents/engineering-9/Game/coin.png');
+display: inline-block;
+}
+
+.ground{
+  height: 45px;
+  width: 45px;
+  background-image: url('bg.png');
+  display: inline-block;
+}
+
+.container{
+  margin: auto;
+  display: inline-block;
+  margin-left: 420px;
+}
+
+body{
+  background-image: url("/Users/tech-a46/Documents/engineering-9/Game/newBackground.jpg");
+}
+
+div{
+  line-height: 0px;
+}

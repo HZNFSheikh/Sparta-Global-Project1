@@ -1,0 +1,5 @@
+body{
+  background-image: url("/Users/tech-a46/Documents/engineering-9/Game/gameover.png");
+  display: inline-block;
+  background-size: cover;
+}

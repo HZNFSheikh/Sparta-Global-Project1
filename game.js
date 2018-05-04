@@ -1,20 +1,40 @@
 
 
-  // 1 => <div class='wall'></div>
-	// 2 => <div class='coin'></div>
-	// 3 => <div class='ground'></div>
-	// 4 => <div class='ghost'></div>
-	// 5 => <div class='pacman'></div>
+//Declaring Variables for the timer
+        var timeInSecs;
+        var ticker;
 
-  // query the DOM and grab the element with an id of score
-  // save that in a variable called counter
-  // make a varibale called score
+              function startTimer(secs){
+              timeInSecs = parseInt(secs)-1;
+              ticker = setInterval("tick()",1000);   // every second
+              }
+
+              function tick() {
+              var secs = timeInSecs;
+              if (secs>0) {
+              timeInSecs--;
+              }
+
+              else {
+              clearInterval(ticker); // stop counting at zero
+              }
 
 
+
+              document.getElementById("countdown").innerHTML = secs;
+              }
+
+
+        startTimer(60);  // 60 seconds
+
+
+//Creating the starting position for pacman
   pacman = {
-  		x: 8,
-  		y: 11,
+  		x: 7,
+  		y: 10,
   	}
+
+    //Array that creates the map and world for pacman using a Y and X axis grid
   	map = [
       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], //Row 1
       [1,2,2,2,2,2,2,1,2,2,2,2,2,2,1], //Row 2
@@ -34,9 +54,18 @@
       [1,2,2,2,2,2,2,2,2,2,2,2,2,2,1], //Row 16
       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], //Row 17
   	]
-  	var el = document.getElementById('world');
-    var score = 0;
 
+    //EL is the variable that links the div to generate the map inside of it
+  	var el = document.getElementById('world');
+
+
+//Replacing all the numbers in the array with the corresponding elements
+
+// 1 => <div class='wall'></div>
+// 2 => <div class='coin'></div>
+// 3 => <div class='ground'></div>
+// 4 => <div class='ghost'></div>
+// 5 => <div class='pacman'></div>
   	function drawWorld(){
   		el.innerHTML = '';
   		for(var y = 0; y < map.length ; y = y + 1) {
@@ -60,6 +89,9 @@
   			el.innerHTML += "<br>";
   		}
   	}
+
+    //Changing direction of pacman and changing squares
+
   	drawWorld();
   	document.onkeydown = function(event){
   		// console.log(event);
@@ -69,8 +101,6 @@
   				pacman.x = pacman.x - 1;
   				map[pacman.y][pacman.x] = 5;
   				drawWorld();
-          // score++
-          // set counters html to be score
   			}
   		}
   		else if (event.keyCode === 38){ // PACMAN MOVE UP
@@ -83,7 +113,7 @@
   		}
   		else if (event.keyCode === 39){ // PACMAN MOVE RIGHT
   			if ( map[pacman.y][pacman.x+1] !== 1){
-  				map[pacman.y][pacman.x] = 3;
+  				map[pacman.y][pacman.x] = 3
   				pacman.x = pacman.x + 1;
   				map[pacman.y][pacman.x] = 5;
   				drawWorld();
@@ -98,6 +128,5 @@
   			}
   		}
 
-      drawWorld();
 
-  	}
+}
